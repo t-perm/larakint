@@ -852,19 +852,19 @@ if ( !function_exists( 's' ) ) {
     die;
   }
 }
-    if ( !function_exists( 'ddd' ) ) {
+    if ( !function_exists( 'de' ) ) {
         /**
          * Alias of Kint::dump()
          *
          * @return string
          */
-        function ddd()
+        function de()
         {
-            if ( !Kint::enabled() ) return null;
+            if ( !Kint::enabled() ) return;
 
             $args = func_get_args();
-            return call_user_func_array( array( 'Kint', 'dump' ), $args );
-            die;
+            call_user_func_array( array( 'Kint', 'dump' ), $args );
+            die();
         }
     }
 }
