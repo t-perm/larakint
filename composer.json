@@ -1,0 +1,25 @@
+{
+    "name": "t-perm/larakint",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "t-perm",
+            "email": "taimaiduc@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "TPerm\\Larakint\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TPerm\\Larakint\\ServiceProvider"
+            ]
+        }
+    }
+}
