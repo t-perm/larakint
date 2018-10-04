@@ -1,4 +1,5 @@
 <?php
+
 namespace TPerm\Larakint;
 
 
@@ -7,6 +8,7 @@ use Illuminate\Support\Facades\Blade;
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     protected $enabled = null;
+
     /**
      * Register the service provider.
      *
@@ -27,10 +29,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         if ($this->isEnabled()) {
             include_once "kint/k.php";
             Blade::directive('d', function ($expression) {
-                d($expression);
+                return "<?php d($expression); ?>";
             });
-            Blade::directive('dd', function ($expression) {
-                ddd($expression);
+            Blade::directive('de', function ($expression) {
+                return "<?php d($expression);die; ?>";
             });
         }
     }
@@ -39,7 +41,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
 
         if ($this->enabled === null) {
-            $config = $this->app['config'];
+            $config        = $this->app['config'];
             $configEnabled = $config->get('app.debug');
             $this->enabled = $configEnabled && !$this->app->runningInConsole() && !$this->app->environment('testing');
         }
